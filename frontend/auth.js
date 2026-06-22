@@ -16,7 +16,7 @@ async function verifyToken() {
   const token = getAuthToken();
 
   if (!token) {
-    window.location.href = "./login.html";
+    window.location.href = "./index.html";
     return false;
   }
 
@@ -32,7 +32,7 @@ async function verifyToken() {
       localStorage.removeItem("authToken");
       localStorage.removeItem("userRole");
       localStorage.removeItem("username");
-      window.location.href = "./login.html";
+      window.location.href = "./index.html";
       return false;
     }
 
@@ -40,7 +40,7 @@ async function verifyToken() {
     return true;
   } catch (error) {
     console.error("Token verification failed:", error);
-    window.location.href = "./login.html";
+    window.location.href = "./index.html";
     return false;
   }
 }
@@ -50,7 +50,7 @@ function logout() {
   localStorage.removeItem("userRole");
   localStorage.removeItem("username");
   localStorage.removeItem("adminUsername");
-  window.location.href = "./login.html";
+  window.location.href = "./index.html";
 }
 
 // Add auth header to all fetch requests
