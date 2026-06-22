@@ -56,8 +56,8 @@ form.addEventListener("submit", async (e) => {
       localStorage.removeItem("adminUsername");
     }
 
-    // Redirect to appropriate page
-    window.location.href = data.redirectUrl;
+    // Redirect to home
+    window.location.href = "./home.html";
     console.log("✅ Login Successful");
   } catch (error) {
     console.error("Login error:", error);
