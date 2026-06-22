@@ -21,7 +21,7 @@ const seedUsers = async () => {
       {
         username: "guest",
         email: "guest@blinkfind.com",
-        password: "guest",
+        password: "guest123",
         role: "guest"
       }
     ];
