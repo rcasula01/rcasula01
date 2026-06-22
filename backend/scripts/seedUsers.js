@@ -10,32 +10,32 @@ const seedUsers = async () => {
     // Clear existing users
     await User.deleteMany({});
 
-    // Create default users
-    const users = [
-      {
-        username: "admin",
-        email: "admin@blinkfind.com",
-        password: "school123",
-        role: "admin"
-      },
-      {
-        username: "guest",
-        email: "guest@blinkfind.com",
-        password: "guest123",
-        role: "guest"
-      }
-    ];
-
-    const createdUsers = await User.insertMany(users);
-    console.log("✅ Seeded users successfully:");
-    createdUsers.forEach(user => {
-      console.log(`   - ${user.username} (${user.role})`);
+    // Create default users using .save() to trigger password hashing
+    const adminUser = new User({
+      username: "admin",
+      email: "admin@blinkfind.com",
+      password: "school123",
+      role: "admin"
     });
+
+    const guestUser = new User({
+      username: "guest",
+      email: "guest@blinkfind.com",
+      password: "guest123",
+      role: "guest"
+    });
+
+    await adminUser.save();
+    await guestUser.save();
+
+    console.log("✅ Seeded users successfully:");
+    console.log(`   - admin (admin)`);
+    console.log(`   - guest (guest)`);
 
     await mongoose.disconnect();
     console.log("Disconnected from MongoDB");
   } catch (error) {
-    console.error("❌ Seed error:", error);
+    console.error("❌ Seed error:", error.message);
     process.exit(1);
   }
 };
