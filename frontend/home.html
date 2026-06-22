@@ -1,34 +1,201 @@
 <!DOCTYPE html>
+<script>
+    window.API_BASE = "http://localhost:4000";
+</script>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlinkFind - Home (Admin)</title>
+  <title>BlinkFind - Home</title>
   <link rel="stylesheet" href="styles.css">
-  <script>
-    window.API_BASE = "http://localhost:4000";
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="navbar-brand">BlinkFind</div>
-    <div class="navbar-user">
-      <span id="welcomeUser"></span>
-      <button onclick="logout()" class="logout-btn">Logout</button>
-    </div>
-  </nav>
 
-  <div class="container">
-    <h1>Welcome, Admin!</h1>
-    <p>You are logged in as: <strong id="userInfo"></strong></p>
-    <p>Role: <strong id="roleInfo"></strong></p>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-name" id="loader-name">BlinkFind<span style="color:var(--accent)">.</span></div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+  <div class="loader-counter" id="loader-counter">000</div>
+</div>
+
+<!-- PROJECT HOVER IMAGE -->
+<div id="proj-hover-img"><img src="" alt="" id="proj-hover-src"/></div>
+
+<!-- NAV -->
+<nav>
+  <a href="home.html" class="nav-logo">BlinkFind</a>
+  <input type="checkbox" id="menuToggle" class="menu-checkbox" aria-hidden="true">
+  <label for="menuToggle" class="hamburger" aria-label="Menu" aria-haspopup="true" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </label>
+  <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="claim.html">Claim</a></li>
+    <li><a href="report.html">Report</a></li>
+    <li><a href="admin.html">Admin</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="#" onclick="logout()"><span>Logout</span></a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <h1 class="hero-title">
+    <div class="overflow-hidden"><span class="title-line block">BlinkFind<span style="color:var(--accent)">.</span></span></div>
+  </h1>
+  <div class="hero-index reveal">
+    <span>Downingtown STEM Academy</span>
+  </div>
+  <div class="hero-bottom reveal">
+    <div></div>
+  </div>
+</section>
+
+<br><br><br>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <div class="section-label reveal">About</div>
+    <h2 class="about-title reveal">
+      Report<br>
+      <em>Match</em><br>
+      and Reconnect
+    </h2>
+    <p class="about-text reveal">
+      BlinkFind is the official lost-and-found platform for Downingtown STEM Academy. Students, teachers, and staff can easily report lost items, submit found items, and securely claim belongings. Our goal is to make recovering lost property faster, simpler, and more reliable for everyone in the STEM Academy community.
+    </p>
+  </div>
+  <img class="about-image" src="upscalemedia-transformed.jpeg" alt="Description of the image" style="width: 800px;border: 5px solid black;">
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <div class="reveal">
+      <div class="section-label">How it works</div>
+      <div class="projects-title">How<br><span style="font-family:var(--font-serif);font-weight:300;font-style:italic;color:var(--accent);"> BlinkFind Works at STEM Academy</span></div>
+    </div>
   </div>
 
-  <script src="auth.js"></script>
-  <script>
-    document.getElementById("welcomeUser").textContent = `Welcome, ${getUsername()}!`;
-    document.getElementById("userInfo").textContent = getUsername();
-    document.getElementById("roleInfo").textContent = getUserRole();
-  </script>
+  <div id="project-list">
+    <div class="project-item reveal">
+      <div class="project-num">01</div>
+      <div>
+        <div class="project-name">Report</div>
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:4px;">Lost or found an item? Upload details and photos.</div>
+      </div>
+      <a href="report.html" class="project-link">View <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">02</div>
+      <div>
+        <div class="project-name">Claim</div>
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:4px;">Browse reported items and submit claim requests!</div>
+      </div>
+      <a href="claim.html" class="project-link">View <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB SECTION -->
+<section id="github-section">
+  <div class="github-inner">
+    <div class="contribution-grid" id="contribGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 PA FBLA All rights reserved.</div>
+  <div class="footer-logo">BlinkFind<span>.</span></div>
+  <div class="footer-right">Built by <span style="color:var(--accent)">Rutviij</span> Casula</div>
+</footer>
+
+<script src="auth.js"></script>
+<script src="supabase.js"></script>
+<script>
+// ── LOADER ──────────────────────────────────────
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  const bar = document.getElementById('loader-bar');
+  const counter = document.getElementById('loader-counter');
+  const name = document.getElementById('loader-name');
+
+  gsap.to(name, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.1 });
+
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += Math.random() * 15;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(interval);
+      setTimeout(() => {
+        gsap.to(loader, {
+          yPercent: -100,
+          duration: 0.9,
+          ease: 'power4.inOut',
+          onComplete: () => { loader.style.display = 'none'; initAnimations(); }
+        });
+      }, 300);
+    }
+    bar.style.width = progress + '%';
+    counter.textContent = String(Math.floor(progress)).padStart(3, '0');
+  }, 60);
+});
+
+// ── INIT GSAP ANIMATIONS ──────────────────────
+function initAnimations() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.title-line', {
+    yPercent: 110,
+    stagger: 0.12,
+    duration: 1,
+    ease: 'power4.out',
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none'
+      }
+    });
+  });
+
+  ScrollTrigger.create({
+    start: 100,
+    onUpdate: (self) => {
+      const nav = document.querySelector('nav');
+      nav.style.boxShadow = self.progress > 0 ? '0 4px 40px rgba(0,0,0,0.06)' : 'none';
+    }
+  });
+}
+
+// ── SMOOTH SCROLL for nav links ───────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
+    }
+  });
+});
+</script>
 </body>
 </html>
