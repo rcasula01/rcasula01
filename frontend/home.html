@@ -24,9 +24,6 @@
   <div class="loader-counter" id="loader-counter">000</div>
 </div>
 
-<!-- PROJECT HOVER IMAGE -->
-<div id="proj-hover-img"><img src="" alt="" id="proj-hover-src"/></div>
-
 <!-- NAV -->
 <nav>
   <a href="home.html" class="nav-logo">BlinkFind</a>
@@ -53,9 +50,6 @@
   <div class="hero-index reveal">
     <span>Downingtown STEM Academy</span>
   </div>
-  <div class="hero-bottom reveal">
-    <div></div>
-  </div>
 </section>
 
 <br><br><br>
@@ -70,10 +64,9 @@
       and Reconnect
     </h2>
     <p class="about-text reveal">
-      BlinkFind is the official lost-and-found platform for Downingtown STEM Academy. Students, teachers, and staff can easily report lost items, submit found items, and securely claim belongings. Our goal is to make recovering lost property faster, simpler, and more reliable for everyone in the STEM Academy community.
+      BlinkFind is the official lost-and-found platform for Downingtown STEM Academy. Students, teachers, and staff can easily report lost items, submit found items, and securely claim belongings.
     </p>
   </div>
-  <img class="about-image" src="upscalemedia-transformed.jpeg" alt="Description of the image" style="width: 800px;border: 5px solid black;">
 </section>
 
 <!-- PROJECTS -->
@@ -81,10 +74,9 @@
   <div class="projects-header">
     <div class="reveal">
       <div class="section-label">How it works</div>
-      <div class="projects-title">How<br><span style="font-family:var(--font-serif);font-weight:300;font-style:italic;color:var(--accent);"> BlinkFind Works at STEM Academy</span></div>
+      <div class="projects-title">How<br><span style="font-family:var(--font-serif);font-weight:300;font-style:italic;color:var(--accent);"> BlinkFind Works</span></div>
     </div>
   </div>
-
   <div id="project-list">
     <div class="project-item reveal">
       <div class="project-num">01</div>
@@ -94,7 +86,6 @@
       </div>
       <a href="report.html" class="project-link">View <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg></a>
     </div>
-
     <div class="project-item reveal">
       <div class="project-num">02</div>
       <div>
@@ -106,13 +97,6 @@
   </div>
 </section>
 
-<!-- GITHUB SECTION -->
-<section id="github-section">
-  <div class="github-inner">
-    <div class="contribution-grid" id="contribGrid"></div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">© 2026 PA FBLA All rights reserved.</div>
@@ -121,9 +105,7 @@
 </footer>
 
 <script src="auth.js"></script>
-<script src="supabase.js"></script>
 <script>
-// ── LOADER ──────────────────────────────────────
 window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
   const bar = document.getElementById('loader-bar');
@@ -152,50 +134,24 @@ window.addEventListener('load', () => {
   }, 60);
 });
 
-// ── INIT GSAP ANIMATIONS ──────────────────────
 function initAnimations() {
   gsap.registerPlugin(ScrollTrigger);
-
   gsap.from('.title-line', {
     yPercent: 110,
     stagger: 0.12,
     duration: 1,
     ease: 'power4.out',
   });
-
   document.querySelectorAll('.reveal').forEach(el => {
     gsap.to(el, {
       opacity: 1,
       y: 0,
       duration: 0.9,
       ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 88%',
-        toggleActions: 'play none none none'
-      }
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
     });
   });
-
-  ScrollTrigger.create({
-    start: 100,
-    onUpdate: (self) => {
-      const nav = document.querySelector('nav');
-      nav.style.boxShadow = self.progress > 0 ? '0 4px 40px rgba(0,0,0,0.06)' : 'none';
-    }
-  });
 }
-
-// ── SMOOTH SCROLL for nav links ───────────────
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', (e) => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
-    }
-  });
-});
 </script>
 </body>
 </html>
