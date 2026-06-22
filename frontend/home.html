@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlinkFind - Home (Admin)</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.API_BASE = "http://localhost:4000";
+  </script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">BlinkFind</div>
+    <div class="navbar-user">
+      <span id="welcomeUser"></span>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Welcome, Admin!</h1>
+    <p>You are logged in as: <strong id="userInfo"></strong></p>
+    <p>Role: <strong id="roleInfo"></strong></p>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    document.getElementById("welcomeUser").textContent = `Welcome, ${getUsername()}!`;
+    document.getElementById("userInfo").textContent = getUsername();
+    document.getElementById("roleInfo").textContent = getUserRole();
+  </script>
+</body>
+</html>
