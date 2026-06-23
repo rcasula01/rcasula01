@@ -18,23 +18,29 @@
 <!-- Login Section -->
 <div class="login-container">
   <div class="login-box">
+    <!-- Page Title -->
     <h1 class="login-title">Login</h1>
 
+    <!-- Error Message (hidden until login fails via JS) -->
     <div class="login-error" id="loginError">
       <i class="fas fa-exclamation-circle"></i> Invalid username or password.
     </div>
 
+    <!-- Login Form -->
     <form id="loginForm">
+      <!-- Username Field -->
       <div class="form-group">
         <label>Username</label>
         <input type="text" id="username" autocomplete="username" required>
       </div>
 
+      <!-- Password Field -->
       <div class="form-group">
         <label>Password</label>
         <input type="password" id="password" autocomplete="current-password" required>
       </div>
 
+      <!-- Remember Me + Forgot Password -->
       <div class="remember-forgot">
         <label>
           <input type="checkbox" id="rememberMe"> Remember me
@@ -42,9 +48,11 @@
         <a href="#" id="forgotPassword">Forgot password?</a>
       </div>
 
+      <!-- Submit Button -->
       <button type="submit" class="login-button">Login</button>
     </form>
 
+    <!-- Demo Credentials -->
     <p class="hint">Demo Credentials: <b>admin / school123</b> or <b>guest / guest</b></p>
   </div>
 </div>
@@ -56,6 +64,7 @@
   <div class="footer-right">Built by <span style="color:var(--accent)">Rutviij</span> Casula</div>
 </footer>
 
+<!-- External JavaScript Files -->
 <script src="login.js"></script>
  </body>
 </html>
